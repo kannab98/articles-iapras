@@ -1,0 +1,53 @@
+\include{preamble.tex}
+\title{Черновик статьи \\ \textbf{Моделирование схемы измерения DPR}}
+\author{Понур К.А.}
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+\section{Моделирование морского волнения}%
+\label{sec:modelirovanie_morskogo_volneniia}
+
+
+\subsection{Вычисление корреляционной функции}%
+\label{sub:vychislenie_korreliatsionnoi_funktsii}
+
+
+Для проверки качества моделирования, а также вычисления нового спектра волнения 
+необходимо вычислять функцию корреляции для модельной поверхности.
+
+По определению, 
+\begin{equation}
+    K_{\zeta}(\rho) = \mean{ \zeta(r) \zeta(r+\rho) }
+\end{equation}
+
+Для стационарного и эргодического процесса
+\begin{equation}
+    \label{eq:defK:2}
+    K_{\zeta}(\rho) = \frac{1}{r_0} \int\limits_{0}^{r_0}  \zeta(r) \zeta(r+\rho)
+    \dd r
+\end{equation}
+где $r_0$ должно быть велико по сравнению с чем-то.
+
+Расчет корреляции можно ускорить, используя теорему о корреляции, которая
+обычно формулируется следующим образом:
+\begin{equation}
+    K_{\zeta}(\rho) = \ifft{\fft*{\xi} \cdot \fft{\xi}} = 
+    \ifft{\abs{\fft{\xi}}^2}
+\end{equation}
+
+При помощи теоремы котельникова можно пока
+
+\begin{equation}
+    \label{eq:}
+    \Delta x = \frac{\pi}{k}
+\end{equation}
+
+
+
+
+
+\end{document}
+
