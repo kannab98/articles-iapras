@@ -22,7 +22,13 @@ for i in range(len(nms)):
     axs[-1].set_xlabel("$x$, м")
     axs[-1].set_ylabel(lbly[i])
 
-    figs[-1].savefig(nms[i]+'.png')
+    # figs[-1].savefig(nms[i]+'.png')
+
+
+import matplotlib.backends.backend_pdf
+with matplotlib.backends.backend_pdf.PdfPages("cwm_demo_1d.pdf") as pdf:
+    for fig in figs:
+        pdf.savefig( fig )
 
 
 
