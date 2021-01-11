@@ -3,47 +3,96 @@
 \author{Понур К.А.}
 \begin{document}
 \maketitle
-\tableofcontents
+%\tableofcontents
 
 
 
-\section{Моделирование морского волнения}%
-\label{sec:modelirovanie_morskogo_volneniia}
+%\section{Моделирование морского волнения}%
+%\label{sec:modelirovanie_morskogo_volneniia}
 
 
-\subsection{Вычисление корреляционной функции}%
-\label{sub:vychislenie_korreliatsionnoi_funktsii}
+%\subsection{Вычисление корреляционной функции}%
+%\label{sub:vychislenie_korreliatsionnoi_funktsii}
 
 
-Для проверки качества моделирования, а также вычисления нового спектра волнения 
-необходимо вычислять функцию корреляции для модельной поверхности.
+%Для проверки качества моделирования, а также вычисления нового спектра волнения 
+%необходимо вычислять функцию корреляции для модельной поверхности.
 
-По определению, 
-\begin{equation}
-    K_{\zeta}(\rho) = \mean{ \zeta(r) \zeta(r+\rho) }
-\end{equation}
+%По определению, 
+%\begin{equation}
+    %K_{\zeta}(\rho) = \mean{ \zeta(r) \zeta(r+\rho) }
+%\end{equation}
 
-Для стационарного и эргодического процесса
-\begin{equation}
-    \label{eq:defK:2}
-    K_{\zeta}(\rho) = \frac{1}{r_0} \int\limits_{0}^{r_0}  \zeta(r) \zeta(r+\rho)
-    \dd r
-\end{equation}
-где $r_0$ должно быть велико по сравнению с чем-то.
+%Для стационарного и эргодического процесса
+%\begin{equation}
+    %\label{eq:defK:2}
+    %K_{\zeta}(\rho) = \frac{1}{r_0} \int\limits_{0}^{r_0}  \zeta(r) \zeta(r+\rho)
+    %\dd r
+%\end{equation}
+%где $r_0$ должно быть велико по сравнению с чем-то.
+
+%Расчет корреляции можно ускорить, используя теорему о корреляции, которая
+%обычно формулируется следующим образом:
+%\begin{equation}
+    %K_{\zeta}(\rho) = \ifft{\fft*{\xi} \cdot \fft{\xi}} = 
+    %\ifft{\abs{\fft{\xi}}^2}
+%\end{equation}
+
+%При помощи теоремы котельникова можно пока
+
+%\begin{equation}
+    %\label{eq:}
+    %\Delta x = \frac{\pi}{k}
+%\end{equation}
 
 Расчет корреляции можно ускорить, используя теорему о корреляции, которая
 обычно формулируется следующим образом:
-\begin{equation}
-    K_{\zeta}(\rho) = \ifft{\fft*{\xi} \cdot \fft{\xi}} = 
-    \ifft{\abs{\fft{\xi}}^2}
-\end{equation}
-
-При помощи теоремы котельникова можно пока
 
 \begin{equation}
-    \label{eq:}
-    \Delta x = \frac{\pi}{k}
+    K_{\zeta}(\rho) = \ifft{\fft*{\zeta} \cdot \fft{\zeta}} = 
+    \ifft{S(\kappa)}
 \end{equation}
+
+\begin{equation}
+    \fft{\zeta} = \int\limits_{-\infty}^{\infty} \zeta(x_0,t) e^{-i kx_0} \dd x_0 
+\end{equation}
+
+В случае с моделью заостренной поверхности
+\begin{equation}
+    \fft{\zeta} = \int\limits_{-\infty}^{\infty} \zeta(x,t) e^{-i kx_0} \dd x,
+\end{equation}
+
+
+где 
+\begin{equation}
+    \dv{x}{x_0} = 1 -  \int\limits_{-\infty}^{\infty} k
+    \fft{\zeta(x,t)}e^{-ikx_0} \dd x_0
+\end{equation}
+
+\begin{gather}
+    \fft{\zeta} = 
+    \int\limits_{-\infty}^{\infty} \zeta(x,t) e^{-i kx_0}
+    \qty( 1 -  \int\limits_{-\infty}^{\infty} k \fft{\zeta(x_0,t)}e^{-ikx_0}\dd
+    \kappa)
+\dd x_0 \end{gather}
+
+%\begin{equation}
+    %K_{\sigma}(\rho) = \ifft{\kappa^2 S(\kappa)}
+%\end{equation}
+
+%\begin{equation}
+    %K_{v}(\rho) = \ifft{\omega^2(\kappa) S(\kappa)}
+%\end{equation}
+
+
+%Раскроем обратное преобразование Фурье
+%\begin{equation}
+    %K_{\zeta}(\rho) = \frac{1}{T}\int\limits_{0}^{T} S(\kappa) e^{i\kappa\rho}
+    %\dd \kappa
+%\end{equation}
+
+
+
 
 
 
