@@ -14,7 +14,8 @@ sigmay = np.zeros_like(U)
 for i in range(U.size):
     rc.wind.speed = U[i]
     var[i] = spectrum.quad(0,0)
-    mean[i] = - spectrum.quad(1,0)
+    mean[i] = -spectrum.quad(1,0)
+    print(mean[i])
     # sigmax[i] = spectrum.dblquad(2,0,0)
     # sigmay[i] = spectrum.dblquad(0,2,0)
 
@@ -24,10 +25,12 @@ axs = []
 
 fig, ax = plt.subplots()
 
+
 ax.plot(U, var, label="Gaussian")
 ax.plot(U, var - mean, label="CWM")
+ax.legend()
 ax.set_xlabel("$U_{10}$, м/с")
-ax.set_ylabel("$\\sigma^2_0$, м/с")
+ax.set_ylabel("$\\sigma^2_0, \\text{м}^2$")
 
 fig.savefig("cwm_variance")
 df = pd.DataFrame({"U": U, "mean": mean, "var":var, "sigmaxx":sigmax, "sigmayy":sigmay})
