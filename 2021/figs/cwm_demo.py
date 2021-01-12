@@ -45,20 +45,20 @@ ax1.set_xlabel("$x$, м")
 
 fig2, ax2 = plt.subplots(ncols=1, nrows=1)
 # ax2.set_title("Наклоны")
-ax2.plot(x, surface[1,:])
-ax2.set_ylabel("$\\sigma(x)$, м")
+ax2.plot(x, np.rad2deg(np.arctan(surface[1,:])))
+ax2.set_ylabel("$\\sigma(x)$, град")
 ax2.set_xlabel("$x$, м")
 
 fig3, ax3 = plt.subplots(ncols=1, nrows=1)
 # ax3.set_title("Скорости Z")
 ax3.plot(x, surface[3,:])
-ax3.set_ylabel("$v_z(x)$, м")
+ax3.set_ylabel("$v_z(x)$, м/c")
 ax3.set_xlabel("$x$, м")
 
 fig4, ax4 = plt.subplots(ncols=1, nrows=1)
 # ax4.set_title("Скорости X")
 ax4.plot(x, surface[4,:])
-ax4.set_ylabel("$v_x(x)$, м")
+ax4.set_ylabel("$v_x(x)$, м/c")
 ax4.set_xlabel("$x$, м")
 
 V1 = surface[3,:]**2 + surface[4,:]**2
@@ -76,7 +76,7 @@ surface[1] *= 1 - e.real * (k.real * k.real)/abs(k)
 
 
 ax1.plot(x, surface[0,:])
-ax2.plot(x, surface[1,:])
+ax2.plot(x, np.rad2deg(np.arctan(surface[1,:])))
 ax3.plot(x, surface[3,:])
 ax4.plot(x, surface[4,:])
 
