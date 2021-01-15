@@ -66,16 +66,19 @@ V1 = surface[3,:]**2 + surface[4,:]**2
 # Поправка на наклоны заостренной поверхности
 # Наклоны X dz/dx * dx/dx0
 
-x -= e.imag * k.real/abs(k)
+
 # ax[0,1].plot(x0, surface[1,:])
 surface[1] *= 1 - e.real * (k.real * k.real)/abs(k)
 # Наклоны Y dz/dy * dy/dy0 
-# surface[2] *= 1 - e.real * (k.imag * k.imag)/abs(k)
+surface[2] *= 1 - e.real * (k.imag * k.imag)/abs(k)
 # Орбитальные скорости Vh dVh/dx * dx/dx0
-# surface[4] *= 1 - e.real * (k.real * k.real)/abs(k)
+surface[4] *= 1 - e.real * (k.real * k.real)/abs(k)
 
 
+x -= e.imag * k.real/abs(k)
 ax1.plot(x, surface[0,:])
+# x += e.imag * k.real/abs(k)
+
 ax2.plot(x, np.rad2deg(np.arctan(surface[1,:])))
 ax3.plot(x, surface[3,:])
 ax4.plot(x, surface[4,:])
