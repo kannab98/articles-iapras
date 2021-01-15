@@ -27,7 +27,7 @@ fig, ax = plt.subplots()
 
 
 ax.plot(U, var, label="Gaussian")
-ax.plot(U, var - mean, label="CWM")
+ax.plot(U, var - mean**2, label="CWM")
 ax.legend()
 ax.set_xlabel("$U_{10}$, м/с")
 ax.set_ylabel("$\\sigma^2_0, \\text{м}^2$")
