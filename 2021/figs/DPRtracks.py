@@ -27,7 +27,7 @@ ax.set_xlabel("$\\phi_0,$ deg")
 ax.set_ylabel("$\\theta,$ deg")
 
 fig.savefig('direction.png')
-fig, ax = plt.subplots(figsize=(3.6,3.6))
+fig, ax = plt.subplots(figsize=(3.6, 3.6))
 
 argdir = [0, z.shape[1]//2, z.shape[1]//4, z.shape[1]//8]
 argdir = np.sort(argdir)
@@ -39,9 +39,13 @@ line =  lambda theta, xx, A: 10*np.log10(surface.cross_section(theta,np.array([[
 line0 =  lambda theta, xx, A: 10*np.log10(surface.cross_section(theta,np.array([[xx,0],[0,xx]])))
 for i in argdir:
     ax.scatter(y[:,i], z[:,i], marker='x', label="$\\phi_0 = %.0f^\\circ$" % direction[i])
+
+
 ax.legend()
 ax.set_xlabel("$\\theta$, deg" )
 ax.set_ylabel("$\\sigma_0$, dB" )
+
+
 
 
     # popt = curve_fit(line, 
@@ -53,6 +57,15 @@ ax.set_ylabel("$\\sigma_0$, dB" )
     # ax.plot(xi, line0(np.deg2rad(xi), *popt))
 
 fig.savefig('direction_slices.png')
+
+fig, ax = plt.subplots(figsize=(3.6, 3.6))
+
+for i in argdir:
+    ax.scatter(x[i,:], z[i,:], marker='x', label="$\\theta = %.0f^\\circ$" % np.abs(y[i,0]))
+ax.legend()
+ax.set_xlabel("$\\phi_0$, deg" )
+ax.set_ylabel("$\\sigma_0$, dB" )
+fig.savefig('direction_slices1.png')
 
 with open("fetch.tsv", 'r') as f:
     df = pd.read_csv(f, sep='\t', header=0)
@@ -79,7 +92,7 @@ ax.set_ylabel("$\\theta,$ deg")
 
 fig.savefig('fetch.png')
 
-fig, ax = plt.subplots(figsize=(3.6,3.6))
+fig, ax = plt.subplots(figsize=(3.6, 3.6))
 
 argxi = [-1, -z.shape[0]//2, -z.shape[0]//4, -z.shape[0]//8]
 argxi = np.sort(argxi)
@@ -92,6 +105,16 @@ for i in argxi:
 
 ax.set_xlabel('$\\tilde x$')
 ax.set_ylabel('$\\sigma_0,$ dB')
-
 ax.legend()
 fig.savefig('fetch_slices.png')
+
+fig, ax = plt.subplots(figsize=(3.6, 3.6))
+argxi = [0, z.shape[1]//4, 2*z.shape[1]//4, z.shape[1]-1]
+argxi = np.sort(argxi)
+for i in argxi:
+    ax.scatter(y[:,i], z[:,i], marker='x', label="$\\tilde x= %.0f$" % np.abs(x[0,i]))
+
+ax.legend()
+ax.set_xlabel("$\\theta$, deg" )
+ax.set_ylabel("$\\sigma_0$, dB" )
+fig.savefig('fetch_slices1.png')

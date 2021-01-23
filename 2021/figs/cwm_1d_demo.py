@@ -26,7 +26,7 @@ lbly = ["$\\zeta(x)$, m", "$\\sigma_x(x)$, deg", "$\\sigma_y(x)$, deg",
 nms = ["h", "sigmax", "sigmay", "vz", "vx", "vy"]
 
 for i in range(len(nms)):
-    fig, ax = plt.subplots(figsize=(1.8, 1.8))
+    fig, ax = plt.subplots(figsize=(2.6, 2.6))
     figs.append(fig)
     axs.append(ax)
     axs[-1].plot(x, srf0[i])
