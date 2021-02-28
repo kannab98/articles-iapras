@@ -1,6 +1,6 @@
 from modeling import rc, spectrum
-import numpy as np 
-import matplotlib.pyplot as plt 
+import numpy as np
+import matplotlib.pyplot as plt
 import pandas as pd
 
 U = np.linspace(3,15)
